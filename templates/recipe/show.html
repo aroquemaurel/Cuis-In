@@ -4,16 +4,16 @@
     <div class="row">
         <div class="col-md-4 panel panel-default">
             <div class="panel-body">
-            <ul>
-                <li>Couvert: {{ recipe.serves }}</li>
-                <li>Temps de préparation: {{ recipe.preparationTime }}</li>
-                <li>Temps de cuisson: {{ recipe.cuissonTime }}</li>
+            <ul style="list-style-type: none">
+                <li><i class="glyphicon glyphicon-cutlery"></i>&nbsp;&nbsp;Couvert: {{ recipe.serves }}</li>
+                <li><i class="glyphicon glyphicon-time"></i>&nbsp;&nbsp;Temps de préparation: {{ recipe.preparationTime }}</li>
+                <li><i class="glyphicon glyphicon-time"></i>&nbsp;&nbsp;Temps de cuisson: {{ recipe.cuissonTime }}</li>
             </ul>
             </div>
         </div>
-        <div class="col-md-offset-4 col-md-4 panel panel-default">
+        <div class="col-md-offset-4 col-md-3 panel panel-default">
             <div class="panel-body">
-                <ul>
+                <ul style="list-style-type: none">
                     <li>Note: {{ recipe.note }}</li>
                     <li>Difficulté: {{ recipe.hard }}</li>
                 </ul>

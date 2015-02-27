@@ -20,7 +20,7 @@ def add(request):
     return render(request, 'recipe/add.html', locals())
 
 
-def show(request, id):
+def show(request, id, slug):
     recipe = get_object_or_404(Recipe, id=id)
     categories = Category.objects.all()
 
