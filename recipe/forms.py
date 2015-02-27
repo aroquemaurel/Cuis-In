@@ -1,7 +1,7 @@
 #-*- coding: utf-8 -*-
 from django import forms
 from recipe.models import Recipe
-import floppyforms as forms
+import floppyforms
 
 
 def get_categories():
@@ -13,4 +13,9 @@ class AddRecipeForm(forms.ModelForm):
         model = Recipe
         widgets = {
             'ingredients': forms.Textarea(attrs={'rows': 5}),
+            'note': floppyforms.RangeInput(attrs={'min': 0, 'max': 5}),
+            'hard': floppyforms.RangeInput(attrs={'min': 0, 'max': 5}),
+            'cuissonTime': floppyforms.NumberInput(attrs={'min': 0}),
+            'preparationTime': floppyforms.NumberInput(attrs={'min': 0}),
+            'serves': floppyforms.NumberInput(attrs={'min': 0}),
         }
