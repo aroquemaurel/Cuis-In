@@ -22,4 +22,9 @@ def add(request):
 
 def show(request, id):
     recipe = get_object_or_404(Recipe, id=id)
-    return render(request, 'recipe/show.html', {'recipe': recipe})
+    categories = Category.objects.all()
+
+    return render(request, 'recipe/show.html', {'recipe': recipe,
+                                                'categories': categories,
+                                                'currentCat': recipe.category
+                                                })

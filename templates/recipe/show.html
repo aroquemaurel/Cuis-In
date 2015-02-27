@@ -1,9 +1,46 @@
 {% extends "skeleton.html" %}
 
 {% block content %}
-{{ recipe.title }}
+    <div class="row">
+        <div class="col-md-4 panel panel-default">
+            <div class="panel-body">
+            <ul>
+                <li>Couvert: {{ recipe.serves }}</li>
+                <li>Temps de préparation: {{ recipe.preparationTime }}</li>
+                <li>Temps de cuisson: {{ recipe.cuissonTime }}</li>
+            </ul>
+            </div>
+        </div>
+        <div class="col-md-offset-4 col-md-4 panel panel-default">
+            <div class="panel-body">
+                <ul>
+                    <li>Note: {{ recipe.note }}</li>
+                    <li>Difficulté: {{ recipe.hard }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading"><b>Ingrédients</b></div>
+            <div class="panel-body">
+                <ul>
+                    {% for ingredient in recipe.ingredients.all %}
+                        <li>{{ ingredient.title }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading"><b>Préparation</b></div>
+            <div class="panel-body">
+                {{ recipe.preparation }}
+            </div>
+        </div>
+    </div>
 {% endblock %}
-
 
 {% block title %}
     Accueil
@@ -12,6 +49,11 @@
 {% block titlePage %}
     Afficher une recette
 {% endblock %}
+
 {% block subtitle %}
     {{ recipe.title }}
+{% endblock %}
+
+{% block leftbar %}
+    {% include "recipe/categories.html" %}
 {% endblock %}
