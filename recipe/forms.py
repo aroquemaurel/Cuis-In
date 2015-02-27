@@ -9,3 +9,6 @@ def get_categories():
 class AddRecipeForm(forms.ModelForm):
     class Meta:
         model = Recipe
+        widgets = {
+            'ingredients': forms.Textarea(attrs={'rows': 5}),
+        }
