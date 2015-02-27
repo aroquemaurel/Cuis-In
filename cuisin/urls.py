@@ -12,4 +12,5 @@ urlpatterns = patterns('recipe.views',
     url(r'^recettes/ajouter', 'add'),
     url(r'^$', 'list'),
     url(r'^recette/(?P<id>\d+)$', 'show'),
+    url(r'^recettes/(?P<slug>.+)$', 'list'),
 )
