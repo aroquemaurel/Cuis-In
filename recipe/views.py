@@ -1,4 +1,5 @@
 #-*- coding: utf-8 -*-
+from _ast import Add
 
 from django.shortcuts import render, get_object_or_404
 from recipe.forms import AddRecipeForm
@@ -16,15 +17,23 @@ def list(request, category='entree'):
 
 
 def add(request):
-    form = AddRecipeForm()
+    if request.method == 'POST':
+        form = AddRecipeForm(request.POST)
+
+        form.save()
+    else:
+        form = AddRecipeForm()
+
     return render(request, 'recipe/add.html', locals())
 
 
 def show(request, id, slug):
     recipe = get_object_or_404(Recipe, id=id)
     categories = Category.objects.all()
+    ingredients = recipe.ingredients.splitlines()
 
     return render(request, 'recipe/show.html', {'recipe': recipe,
                                                 'categories': categories,
-                                                'currentCat': recipe.category
+                                                'currentCat': recipe.category,
+                                                'ingredients': ingredients
                                                 })

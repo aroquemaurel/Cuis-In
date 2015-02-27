@@ -26,9 +26,10 @@ class Recipe(models.Model):
     cuissonTime = models.IntegerField(max_length=4)
     preparation = models.TextField()
     date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date d'ajout")
+    ingredients = models.TextField()
 
     category = models.ForeignKey('Category')
-    ingredients = models.ManyToManyField(Ingredient)
+
 
     def __unicode__(self):
         """

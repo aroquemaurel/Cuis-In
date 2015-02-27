@@ -11,6 +11,7 @@ def get_categories():
 class AddRecipeForm(forms.ModelForm):
     class Meta:
         model = Recipe
+        exclude = {'slug'}
         widgets = {
             'ingredients': forms.Textarea(attrs={'rows': 5}),
             'note': floppyforms.RangeInput(attrs={'min': 0, 'max': 5}),

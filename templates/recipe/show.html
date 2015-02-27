@@ -25,8 +25,8 @@
             <div class="panel-heading"><b>Ingrédients</b></div>
             <div class="panel-body">
                 <ul>
-                    {% for ingredient in recipe.ingredients.all %}
-                        <li>{{ ingredient.title }}</li>
+                    {% for ingredient in ingredients %}
+                        <li>{{ ingredient}}</li>
                     {% endfor %}
                 </ul>
             </div>
@@ -36,7 +36,7 @@
         <div class="panel panel-default">
             <div class="panel-heading"><b>Préparation</b></div>
             <div class="panel-body">
-                {{ recipe.preparation }}
+                {{ recipe.preparation|linebreaks }}
             </div>
         </div>
     </div>
@@ -51,7 +51,7 @@
 {% endblock %}
 
 {% block subtitle %}
-    {{ recipe.title|ci }}
+    {{ recipe.title }}
 {% endblock %}
 
 {% block leftbar %}
