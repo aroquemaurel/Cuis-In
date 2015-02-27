@@ -9,4 +9,6 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'recipe.views.list'),
 
+
+    url(r'^recettes/ajouter', 'recipe.views.add'),
 )
