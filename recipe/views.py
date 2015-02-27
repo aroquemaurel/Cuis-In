@@ -17,14 +17,19 @@ def list(request, category='entree'):
 
 
 def add(request):
+    valid = ""
     if request.method == 'POST':
         form = AddRecipeForm(request.POST)
 
-        form.save()
+        if form.is_valid():
+            form.save()
+            valid = "ok"
+        else:
+            valid = "ko"
     else:
         form = AddRecipeForm()
 
-    return render(request, 'recipe/add.html', locals())
+    return render(request, 'recipe/add.html', {'form': form, 'validation': valid})
 
 
 def show(request, id, slug):
