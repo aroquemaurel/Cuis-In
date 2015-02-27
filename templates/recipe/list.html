@@ -1,0 +1,19 @@
+{% extends "skeleton.html" %}
+{% block content %}
+{% for recipe in recipes %}
+    <li>{{ recipe.title }}</li>
+{% empty %}
+    <p>Aucun article.</p>
+{% endfor %}
+{% endblock %}
+
+{% block title %}
+    Accueil
+{% endblock %}
+
+{% block titlePage %}
+    Cuis-In
+{% endblock %}
+{% block subtitle %}
+    Liste des recettes
+{% endblock %}
