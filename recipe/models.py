@@ -1,6 +1,6 @@
 #-*- coding: utf-8 -*-
 from django.db import models
-
+from django.template.defaultfilters import slugify
 
 class Category(models.Model):
     title = models.CharField(max_length=128)
@@ -38,4 +38,10 @@ class Recipe(models.Model):
         traiterons plus tard et dans l'administration
         """
         return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.slug = slugify(self.title)
+
+        super(Recipe, self).save(*args, **kwargs)
 
