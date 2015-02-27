@@ -2,13 +2,17 @@
 
 from django.shortcuts import render, get_object_or_404
 from recipe.forms import AddRecipeForm
-from recipe.models import Recipe
+from recipe.models import Recipe, Category
 
 
-def list(request):
-    recipes = Recipe.objects.all()
+def list(request, category='entree'):
+    current_cat = Category.objects.get(slug=category)
+    categories = Category.objects.all()
+    recipes = Recipe.objects.all().filter(category=current_cat)
 
-    return render(request, 'recipe/list.html', {'recipes': recipes})
+    return render(request, 'recipe/list.html', {'categories': categories,
+                                                'currentCat': current_cat,
+                                                'recipes': recipes})
 
 
 def add(request):
