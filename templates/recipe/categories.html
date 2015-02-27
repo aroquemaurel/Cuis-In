@@ -1,0 +1,12 @@
+<div class="bs-component">
+    <ul class="nav nav-pills nav-stacked">
+        {% for category in categories %}
+            <li
+                {% if category.slug = currentCat.slug %}
+                    class="active"
+                {% endif %}
+                    >
+                <a href="/recettes/{{ category.slug }}">{{ category.title }}</a></li>
+        {% endfor %}
+    </ul>
+</div>

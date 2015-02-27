@@ -49,7 +49,15 @@
           <div class="col-lg-4 col-md-5 col-sm-6">
           </div>
         </div>
-        {% block content %} {% endblock %}
+
+        <div class="row">
+            <div class="col-xs-3 col-md-3">
+                {% block leftbar %} {% endblock %}
+            </div>
+            <div class="col-xs-9 col-md-9">
+            {% block content %} {% endblock %}
+            </div>
+        </div>
     </div>
 
 </body>
