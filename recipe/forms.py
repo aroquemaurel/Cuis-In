@@ -1,8 +1,11 @@
 #-*- coding: utf-8 -*-
 from django import forms
+from recipe.models import Recipe
 
-class AddRecipeForm(forms.Form):
-    sujet = forms.CharField(max_length=100)
-    #message = forms.CharField(widget=forms.Textarea)
-    #envoyeur = forms.EmailField(label=u"Votre adresse mail")
-    #renvoi = forms.BooleanField(help_text=u"Cochez si vous souhaitez obtenir une copie du mail envoyé.", required=False)
+def get_categories():
+    return ('1', 'Option 1'), ('2', 'Option 2')
+
+
+class AddRecipeForm(forms.ModelForm):
+    class Meta:
+        model = Recipe
