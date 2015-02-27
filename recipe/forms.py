@@ -1,6 +1,8 @@
 #-*- coding: utf-8 -*-
 from django import forms
 from recipe.models import Recipe
+import floppyforms as forms
+
 
 def get_categories():
     return ('1', 'Option 1'), ('2', 'Option 2')
