@@ -40,7 +40,10 @@ INSTALLED_APPS = (
     'floppyforms',
     'members'
 )
-
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'members.context_processors.include_login_form'
+)
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
