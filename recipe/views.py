@@ -2,6 +2,7 @@
 from django.shortcuts import render, get_object_or_404
 from recipe.forms import AddRecipeForm
 from recipe.models import Recipe, Category
+from django.contrib.auth.decorators import permission_required
 
 
 def home(request, errors=[], category='entree'):
@@ -14,7 +15,7 @@ def home(request, errors=[], category='entree'):
                                                 'recipes': recipes,
                                                 'errors': errors})
 
-
+@permission_required('recipe.add_recipe')
 def add(request):
     valid = ""
     if request.method == 'POST':

@@ -12,54 +12,59 @@
 </head>
 <body>
 
-    <div class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
         <div class="navbar-header">
-          <a href="../" class="navbar-brand">Cuis-In</a>
-          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+            <a href="../" class="navbar-brand">Cuis-In</a>
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
-          <ul class="nav navbar-nav">
-            <li>
-              <a href="/recettes/ajouter">Ajouter une recette</a>
-            </li>
-            <li>
-              <a href="/recettes/rechercher">Recherche</a>
-            </li>
-          </ul>
+            <ul class="nav navbar-nav">
+                {% if user.is_authenticated %}
+                    <li>
+                        <a href="/recettes/ajouter">Ajouter une recette</a>
+                    </li>
+                {% endif %}
+                <li>
+                    <a href="/recettes/rechercher">Recherche</a>
+                </li>
+            </ul>
 
             <ul class="nav navbar-nav navbar-right">
-            {% if user.is_authenticated %}
-                <li class="dropdown">
-                    <a href="#"class="dropdown-toggle" data-toggle="dropdown" role="menu" aria-expanded="false">
-                        <i span class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;{{ user.username }} <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="/deconnexion">Déconnexion</a></li>
-                    </ul>
-                </li>
-            {% else %}
+                {% if perms.recipe.add_recipe %}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="menu" aria-expanded="false">
+                            <i span class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;{{ user.username }} <span
+                                class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/deconnexion">Déconnexion</a></li>
+                        </ul>
+                    </li>
+                {% else %}
 
-            <form method="post" class="navbar-form navbar-right " action="/connexion"> {% csrf_token %}
-                <div class="form-group ">
-                    {{ login_form.username|addcss:'form-control ' }}
-                    {{ login_form.password|addcss:'form-control' }}
-                </div>
-                <button type="submit" class="btn btn-info"><i span class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;Se connecter</button>
-            </form>
-    {% endif %}
+                    <form method="post" class="navbar-form navbar-right " action="/connexion"> {% csrf_token %}
+                        <div class="form-group ">
+                            {{ login_form.username|addcss:'form-control ' }}
+                            {{ login_form.password|addcss:'form-control' }}
+                        </div>
+                        <button type="submit" class="btn btn-info"><i span class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;Se
+                            connecter
+                        </button>
+                    </form>
+                {% endif %}
 
-          </ul>
+            </ul>
 
         </div>
-      </div>
     </div>
+</div>
 
 
-    <div class="container">
+<div class="container">
 
     <div class="row">
         <div class="row">
@@ -67,33 +72,34 @@
                 {% block alert %} {% endblock %}
             </div>
         </div>
-          <div class="col-lg-8 col-md-7 col-sm-6">
+        <div class="col-lg-8 col-md-7 col-sm-6">
             <h1>{% block titlePage %}{% endblock %}</h1>
-            <p class="lead">{% block subtitle %}{% endblock %}</p>
-          </div>
-          <div class="col-lg-4 col-md-5 col-sm-6">
-          </div>
-        </div>
 
-        <div class="row">
-            <div class="col-xs-3 col-md-3">
-                {% block leftbar %} {% endblock %}
-            </div>
-            <div class="col-xs-9 col-md-9">
-            {% block content %} {% endblock %}
-            </div>
+            <p class="lead">{% block subtitle %}{% endblock %}</p>
+        </div>
+        <div class="col-lg-4 col-md-5 col-sm-6">
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-xs-3 col-md-3">
+            {% block leftbar %} {% endblock %}
+        </div>
+        <div class="col-xs-9 col-md-9">
+            {% block content %} {% endblock %}
+        </div>
+    </div>
+</div>
 
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="{% static "js/bootstrap.min.js" %}"></script>
 
 <script type="text/javascript">
-jQuery(document).ready(function($) {
-{% block javascript %}
+    jQuery(document).ready(function ($) {
+        {% block javascript %}
 
-{% endblock %}
-});
+        {% endblock %}
+    });
 </script>
 </body>
 
