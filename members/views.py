@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.core.urlresolvers import reverse
 
 def connection(request):
-    errorLogin = False
+    errorLogin = 0
 
     if request.method == "POST":
         form = LoginForm(request.POST)
@@ -18,7 +18,7 @@ def connection(request):
             if user:  # Si l'objet renvoyé n'est pas None
                 login(request, user)  # nous connectons l'utilisateur
             else: #sinon une erreur sera affichée
-                errorLogin = True
+                errorLogin = 1
     else:
         form = LoginForm()
 
@@ -27,6 +27,6 @@ def connection(request):
 
 def deconnection(request):
     logout(request)
-    return render(request, 'recipe/list.html')
+    return render(request, 'recipe/list.html', {'errorDeconnect': 0})
 
 

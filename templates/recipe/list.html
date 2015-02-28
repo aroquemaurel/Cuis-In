@@ -54,11 +54,33 @@
 {% endblock %}
 
 {% block alert %}
-
-    {{ errorLogin }}
-    {% if errorLogin %}
-        OUPW
-    {% else %}
-        ahahs
+    {% if errorLogin == 1 %}
+        <div class="bs-component">
+            <div class="alert alert-dismissible alert-danger">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>Oups!</strong> Mot de passe où Login incorrect
+            </div>
+        </div>
+    {% elif errorLogin == 0 %}
+        <div class="bs-component">
+        <div class="alert alert-dismissible alert-success">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>Succès!</strong> Vous êtes bien connectés
+        </div>
+        </div>
+    {% elif errorDeconnect == 0 %}
+        <div class="bs-component">
+            <div class="alert alert-dismissible alert-success">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>Succès!</strong> Vous êtes bien déconnectés
+            </div>
+        </div>
+    {% elif errorDeconnect == 1 %}
+        <div class="bs-component">
+            <div class="alert alert-dismissible alert-danger">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>Oups!</strong> Une erreur dans la déconnexion s'est produite
+            </div>
+        </div>
     {% endif %}
 {% endblock %}
