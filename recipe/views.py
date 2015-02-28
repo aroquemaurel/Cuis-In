@@ -1,12 +1,10 @@
 #-*- coding: utf-8 -*-
-from _ast import Add
-
 from django.shortcuts import render, get_object_or_404
 from recipe.forms import AddRecipeForm
 from recipe.models import Recipe, Category
 
 
-def list(request, errors=[], category='entree'):
+def home(request, errors=[], category='entree'):
     current_cat = Category.objects.get(slug=category)
     categories = Category.objects.all()
     recipes = Recipe.objects.all().filter(category=current_cat)

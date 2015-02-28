@@ -10,9 +10,9 @@ urlpatterns = patterns('',
 
 
     url(r'^recettes/ajouter', 'recipe.views.add'),
-    url(r'^$', 'recipe.views.list'),
+    url(r'^$', 'recipe.views.home'),
     url(r'^recettes/(?P<id>\d+)-(?P<slug>.+)$', 'recipe.views.show'),
-    url(r'^recettes/(?P<category>.+)$', 'recipe.views.list'),
+    url(r'^recettes/(?P<category>.+)$', 'recipe.views.home'),
 
     url(r'^deconnexion$', 'members.views.deconnection'),
     url(r'^connexion$', 'members.views.connection'),

@@ -1,10 +1,8 @@
 #-*- coding: utf-8 -*-
 
-from django.shortcuts import render
 from members.forms import LoginForm
 from django.contrib.auth import authenticate, login, logout
-from django.core.urlresolvers import reverse
-from recipe.views import list
+from recipe.views import home
 def connection(request):
     errors = {'connection': False}
 
@@ -20,13 +18,13 @@ def connection(request):
             else: #sinon une erreur sera affichée
                 errors = {'connection': True}
 
-    return list(request, errors)
+    return home(request, errors)
 
 
 def deconnection(request):
     errors = {'deconnection': False}
 
     logout(request)
-    return list(request, errors)
+    return home(request, errors)
 
 
