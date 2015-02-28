@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import permission_required
 def home(request, errors=[], category='entree'):
     current_cat = Category.objects.get(slug=category)
     categories = Category.objects.all()
-    recipes = Recipe.objects.all().filter(category=current_cat)
+    recipes = Recipe.objects.all().filter(category=current_cat).order_by('title')
 
     return render(request, 'recipe/list.html', {'categories': categories,
                                                 'currentCat': current_cat,
