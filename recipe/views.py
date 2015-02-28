@@ -6,14 +6,15 @@ from recipe.forms import AddRecipeForm
 from recipe.models import Recipe, Category
 
 
-def list(request, category='entree'):
+def list(request, errors=[], category='entree'):
     current_cat = Category.objects.get(slug=category)
     categories = Category.objects.all()
     recipes = Recipe.objects.all().filter(category=current_cat)
 
     return render(request, 'recipe/list.html', {'categories': categories,
                                                 'currentCat': current_cat,
-                                                'recipes': recipes})
+                                                'recipes': recipes,
+                                                'errors': errors})
 
 
 def add(request):

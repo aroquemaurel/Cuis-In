@@ -33,3 +33,10 @@ def duration(nb_minutes):
         ret += repr(hours)+"h"+repr(minutes)+"mn"
 
     return ret
+
+@register.filter(name="hash")
+def hash(h, key):
+    if key in h:
+        return h[key]
+    else:
+        return None

@@ -4,9 +4,9 @@ from django.shortcuts import render
 from members.forms import LoginForm
 from django.contrib.auth import authenticate, login, logout
 from django.core.urlresolvers import reverse
-
+from recipe.views import list
 def connection(request):
-    errorLogin = 0
+    errors = {'connection': False}
 
     if request.method == "POST":
         form = LoginForm(request.POST)
@@ -18,15 +18,15 @@ def connection(request):
             if user:  # Si l'objet renvoyé n'est pas None
                 login(request, user)  # nous connectons l'utilisateur
             else: #sinon une erreur sera affichée
-                errorLogin = 1
-    else:
-        form = LoginForm()
+                errors = {'connection': True}
 
-    return render(request, 'recipe/list.html', {'errorLogin': errorLogin})
+    return list(request, errors)
 
 
 def deconnection(request):
+    errors = {'deconnection': False}
+
     logout(request)
-    return render(request, 'recipe/list.html', {'errorDeconnect': 0})
+    return list(request, errors)
 
 
