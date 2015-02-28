@@ -32,7 +32,7 @@ def add(request):
     return render(request, 'recipe/add.html', {'form': form, 'validation': valid})
 
 
-def show(request, id, slug):
+def show(request, id, slug='a'):
     recipe = get_object_or_404(Recipe, id=id)
     categories = Category.objects.all()
     ingredients = recipe.ingredients.splitlines()
