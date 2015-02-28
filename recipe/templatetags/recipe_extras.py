@@ -28,9 +28,9 @@ def duration(nb_minutes):
     ret = ""
 
     if hours == 0:
-        ret += repr(minutes)+"mn"
+        ret += str(minutes)+"mn"
     else:
-        ret += repr(hours)+"h"+repr(minutes)+"mn"
+        ret += str(hours)+"h"+str(minutes)+"mn"
 
     return ret
 
