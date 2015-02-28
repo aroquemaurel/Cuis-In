@@ -41,6 +41,7 @@
 
 {% block titlePage %}
     Cuis-In
+    {{ username }}
 {% endblock %}
 {% block subtitle %}
     Liste des recettes
@@ -50,4 +51,14 @@
     $(".clickable-row").click(function() {
         window.document.location = $(this).data("href");
     });
+{% endblock %}
+
+{% block alert %}
+
+    {{ errorLogin }}
+    {% if errorLogin %}
+        OUPW
+    {% else %}
+        ahahs
+    {% endif %}
 {% endblock %}

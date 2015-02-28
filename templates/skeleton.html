@@ -46,7 +46,7 @@
             <form method="post" class="navbar-form navbar-right " action="/connexion"> {% csrf_token %}
                 <div class="form-group ">
                     {{ login_form.username|addcss:'form-control ' }}
-                    {{ login_form.username|addcss:'form-control' }}
+                    {{ login_form.password|addcss:'form-control' }}
                 </div>
                 <button type="submit" class="btn btn-info"><i span class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;Se connecter</button>
             </form>
