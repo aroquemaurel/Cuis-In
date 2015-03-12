@@ -1,0 +1,80 @@
+{% extends "skeleton.html" %}
+{% load recipe_extras %}
+
+{% block content %}
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th class="col-md-1"><i class="glyphicon glyphicon-calendar"></i>Date</th>
+            <th class="col-md-5">Titre</th>
+            <th class="col-md-2">Note</th>
+            <th class="col-md-2">&nbsp;Difficulté</th>
+            <th class="col-md-3"><i class="glyphicon glyphicon-time"></i>&nbsp;Préparation</th>
+            <th style="min-width: 90px" class="col-md-3"><i class="glyphicon glyphicon-time"></i>&nbsp;Cuisson</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for restaurant in restaurants %}
+            <tr class="clickable-row" data-href="{% url "restaurant.views.show" id=restaurant.id %}">
+                <td>{{ restaurant.date|date:"d/m/Y" }}</td>
+                <td>{{ restaurant.title }}</td>
+                <td>{{ restaurant.note|star }}</td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="6">Aucun restaurant</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+{% block title %}
+    Liste des restaurants
+{% endblock %}
+
+{% block titlePage %}
+    Cuis-In
+    {{ username }}
+{% endblock %}
+{% block subtitle %}
+    Liste des restaurants
+{% endblock %}
+
+{% block javascript %}
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+{% endblock %}
+
+{% block alert %}
+    {% if errors|hash:'connection' == 1 %}
+        <div class="bs-component">
+            <div class="alert alert-dismissible alert-danger">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>Oups!</strong> Mot de passe où Login incorrect
+            </div>
+        </div>
+    {% elif errors|hash:'connection' == 0 %}
+        <div class="bs-component">
+        <div class="alert alert-dismissible alert-success">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>Succès!</strong> Vous êtes bien connectés
+        </div>
+        </div>
+    {% elif errors|hash:'deconnection' == 0 %}
+        <div class="bs-component">
+            <div class="alert alert-dismissible alert-success">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>Succès!</strong> Vous êtes bien déconnectés
+            </div>
+        </div>
+    {% elif errors|hash:'deconnection' == 1 %}
+        <div class="bs-component">
+            <div class="alert alert-dismissible alert-danger">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>Oups!</strong> Une erreur dans la déconnexion s'est produite
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
