@@ -1,0 +1,52 @@
+{% extends "skeleton.html" %}
+{% load recipe_extras %}
+
+{% block content %}
+    <div class="row">
+            <div class="col-md-5 panel panel-default">
+            <div class="panel-body">
+            <ul style="list-style-type: none">
+                <li><i class="glyphicon glyphicon-globe"></i>&nbsp;&nbsp;Site Web: <a href="{{ restaurant.website }}">{{ restaurant.website }}</a></li>
+                <li><i class="glyphicon glyphicon-phone-alt"></i>&nbsp;&nbsp;Téléphone: {{ restaurant.phone }}</li>
+                <li><i class="glyphicon glyphicon-info-sign"></i>&nbsp;&nbsp;Adresse:<br/> {{ restaurant.address }}<br/>
+                                                                                {{ restaurant.postalcode }}
+                                                                                {{ restaurant.city|upper }}
+                </li>
+            </ul>
+            </div>
+        </div>
+
+        <div class="col-md-offset-3 col-md-3 panel panel-default">
+            <div class="panel-body">
+                <ul style="list-style-type: none">
+                    <li>Note <span style="float: right">{{ restaurant.note|star }}</span></li>
+                    <li>Réservation <span style="float: right">{{ restaurant.reservation|bool }}</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="glyphicon glyphicon-pushpin"></i>&nbsp;&nbsp;<b>Description</b></div>
+            <div class="panel-body">
+                {{ restaurant.description|linebreaks }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}
+    Restaurant {{ restaurant.title }}
+{% endblock %}
+
+{% block titlePage %}
+    Afficher un restaurant
+{% endblock %}
+
+{% block subtitle %}
+    {{ restaurant.title }}
+{% endblock %}
+
+{% block leftbar %}
+    {% include "recipe/categories.html" %}
+{% endblock %}

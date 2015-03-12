@@ -1,0 +1,60 @@
+{% extends "skeleton.html" %}
+{% load recipe_extras %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-4 panel panel-default">
+            <div class="panel-body">
+            <ul style="list-style-type: none">
+                <li><i class="glyphicon glyphicon-cutlery"></i>&nbsp;&nbsp;Couvert: {{ recipe.serves }}</li>
+                <li><i class="glyphicon glyphicon-time"></i>&nbsp;&nbsp;Préparation: {{ recipe.preparationTime|duration }}</li>
+                <li><i class="glyphicon glyphicon-time"></i>&nbsp;&nbsp;Cuisson: {{ recipe.cuissonTime|duration }}</li>
+            </ul>
+            </div>
+        </div>
+        <div class="col-md-offset-4 col-md-4 panel panel-default">
+            <div class="panel-body">
+                <ul style="list-style-type: none">
+                    <li>Note <span style="float: right">{{ recipe.note|star }}</span></li>
+                    <li>Difficulté <span style="float: right">{{ recipe.hard|star }}</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;<b>Ingrédients</b></div>
+            <div class="panel-body">
+                <ul>
+                    {% for ingredient in ingredients %}
+                        <li>{{ ingredient}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="glyphicon glyphicon-pushpin"></i>&nbsp;&nbsp;<b>Préparation</b></div>
+            <div class="panel-body">
+                {{ recipe.preparation|linebreaks }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}
+    Accueil
+{% endblock %}
+
+{% block titlePage %}
+    Afficher une recette
+{% endblock %}
+
+{% block subtitle %}
+    {{ recipe.title }}
+{% endblock %}
+
+{% block leftbar %}
+    {% include "recipe/categories.html" %}
+{% endblock %}

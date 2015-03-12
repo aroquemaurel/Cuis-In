@@ -1,56 +1,112 @@
 {% load static %}
+{% load recipe_extras %}
 
 <!DOCTYPE html>
 <html>
 <head lang="en">
     <meta charset="UTF-8">
     <title>Cuis-In — {% block title %}{% endblock %}</title>
-     <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
     <link rel="stylesheet" href="{% static "css/bootswatch.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/cuis-in.css" %}">
 </head>
 <body>
 
-    <div class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
         <div class="navbar-header">
-          <a href="../" class="navbar-brand">Cuis-In</a>
-          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+            <a href="{% url "recipe.views.home" %}" class="navbar-brand">Cuis-In</a>
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
-          <ul class="nav navbar-nav">
-            <li>
-              <a href="../help/">Ajouter une recette</a>
-            </li>
-            <li>
-              <a href="http://news.bootswatch.com">Recherche</a>
-            </li>
-          </ul>
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="{% url "restaurant.views.list" %}">Liste des restaurants</a>
+                </li>
 
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="http://builtwithbootstrap.com/" target="_blank">Truc</a></li>
-            <li><a href="https://wrapbootstrap.com/?ref=bsw" target="_blank">Machin</a></li>
-          </ul>
+                {% if user.is_authenticated %}
+                    <li>
+                        <a href="{% url "recipe.views.add" %}">Ajouter une recette</a>
+                    </li>
+                {% endif %}
+                <li>
+                    <a href="#">Recherche</a>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                {% if perms.recipe.add_recipe %}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="menu" aria-expanded="false">
+                            <i span class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;{{ user.username }} <span
+                                class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{% url "members.views.deconnection" %}">Déconnexion</a></li>
+                        </ul>
+                    </li>
+                {% else %}
+
+                    <form method="post" class="navbar-form navbar-right " action="{% url "members.views.connection" %}"> {% csrf_token %}
+                        <div class="form-group ">
+                            {{ login_form.username|addcss:'form-control ' }}
+                            {{ login_form.password|addcss:'form-control' }}
+                        </div>
+                        <button type="submit" class="btn btn-info"><i span class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;Se
+                            connecter
+                        </button>
+                    </form>
+                {% endif %}
+
+            </ul>
 
         </div>
-      </div>
     </div>
+</div>
 
 
-    <div class="container">
+<div class="container">
+
     <div class="row">
-          <div class="col-lg-8 col-md-7 col-sm-6">
-            <h1>Cuis-In</h1>
-            <p class="lead">Gestion de recettes de cuisine</p>
-          </div>
-          <div class="col-lg-4 col-md-5 col-sm-6">
-          </div>
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6" style="margin-top: 50px;">
+                {% block alert %} {% endblock %}
+            </div>
         </div>
-        {% block content %} {% endblock %}
+        <div class="col-lg-8 col-md-7 col-sm-6">
+            <h1>{% block titlePage %}{% endblock %}</h1>
+
+            <p class="lead">{% block subtitle %}{% endblock %}</p>
+        </div>
+        <div class="col-lg-4 col-md-5 col-sm-6">
+        </div>
     </div>
 
+    <div class="row">
+        <div class="col-xs-3 col-md-3">
+            {% block leftbar %} {% endblock %}
+        </div>
+        <div class="col-xs-9 col-md-9">
+            {% block content %} {% endblock %}
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="{% static "js/bootstrap.min.js" %}"></script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        {% block javascript %}
+
+        {% endblock %}
+    });
+</script>
 </body>
+
+
 </html>
+
