@@ -24,6 +24,10 @@
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
             <ul class="nav navbar-nav">
+                <li>
+                    <a href="{% url "restaurant.views.list" %}">Liste des restaurants</a>
+                </li>
+
                 {% if user.is_authenticated %}
                     <li>
                         <a href="{% url "recipe.views.add" %}">Ajouter une recette</a>
