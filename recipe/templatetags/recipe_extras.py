@@ -22,7 +22,7 @@ def star(nb_star):
 
     if nb_star == -1:
         ret = '<i class="glyphicon glyphicon-question-sign"></i>'
-        
+
     return mark_safe(ret)
 
 @register.filter(is_safe=True)

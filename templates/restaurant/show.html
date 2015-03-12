@@ -3,12 +3,12 @@
 
 {% block content %}
     <div class="row">
-            <div class="col-md-4 panel panel-default">
+            <div class="col-md-5 panel panel-default">
             <div class="panel-body">
             <ul style="list-style-type: none">
-                <li><i class="glyphicon glyphicon-globe"></i>&nbsp;&nbsp;Site Web: {{ restaurant.website }}</li>
+                <li><i class="glyphicon glyphicon-globe"></i>&nbsp;&nbsp;Site Web: <a href="{{ restaurant.website }}">{{ restaurant.website }}</a></li>
                 <li><i class="glyphicon glyphicon-phone-alt"></i>&nbsp;&nbsp;Téléphone: {{ restaurant.phone }}</li>
-                <li><i class="glyphicon glyphicon-info-sign"></i>&nbsp;&nbsp;Adresse: {{ restaurant.address }}
+                <li><i class="glyphicon glyphicon-info-sign"></i>&nbsp;&nbsp;Adresse:<br/> {{ restaurant.address }}<br/>
                                                                                 {{ restaurant.postalcode }}
                                                                                 {{ restaurant.city|upper }}
                 </li>
@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        <div class="col-md-offset-4 col-md-4 panel panel-default">
+        <div class="col-md-offset-3 col-md-3 panel panel-default">
             <div class="panel-body">
                 <ul style="list-style-type: none">
                     <li>Note <span style="float: right">{{ restaurant.note|star }}</span></li>
