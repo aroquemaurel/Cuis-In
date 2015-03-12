@@ -2,6 +2,7 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 
+
 class Category(models.Model):
     title = models.CharField(max_length=128)
     slug = models.SlugField(max_length=128)
@@ -16,9 +17,10 @@ class Ingredient(models.Model):
     def __unicode__(self):
         return self.title
 
+
 class Recipe(models.Model):
     title = models.CharField(max_length=128)
-    slug = models.SlugField(max_length=128)
+    slug = models.SlugField(max_length=128, default="")
     note = models.IntegerField(max_length=2)
     hard = models.IntegerField(max_length=2)
     serves = models.IntegerField(max_length=2)
