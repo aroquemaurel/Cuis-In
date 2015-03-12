@@ -3,6 +3,19 @@
 
 {% block content %}
     <div class="row">
+            <div class="col-md-4 panel panel-default">
+            <div class="panel-body">
+            <ul style="list-style-type: none">
+                <li><i class="glyphicon glyphicon-globe"></i>&nbsp;&nbsp;Site Web: {{ restaurant.website }}</li>
+                <li><i class="glyphicon glyphicon-phone-alt"></i>&nbsp;&nbsp;Téléphone: {{ restaurant.phone }}</li>
+                <li><i class="glyphicon glyphicon-info-sign"></i>&nbsp;&nbsp;Adresse: {{ restaurant.address }}
+                                                                                {{ restaurant.postalcode }}
+                                                                                {{ restaurant.city|upper }}
+                </li>
+            </ul>
+            </div>
+        </div>
+
         <div class="col-md-offset-4 col-md-4 panel panel-default">
             <div class="panel-body">
                 <ul style="list-style-type: none">

@@ -9,6 +9,7 @@
             <th class="col-md-5">Titre</th>
             <th class="col-md-2">Note</th>
             <th class="col-md-2">Réservation</th>
+            <th class="col-md-2">Ville</th>
         </tr>
     </thead>
     <tbody>
@@ -18,6 +19,7 @@
                 <td>{{ restaurant.title }}</td>
                 <td>{{ restaurant.note|star }}</td>
                 <td>{{ restaurant.reservation|bool }}</td>
+                <td>{{ restaurant.city|upper }}</td>
             </tr>
         {% empty %}
             <tr>
