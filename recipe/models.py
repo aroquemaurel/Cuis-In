@@ -32,16 +32,11 @@ class Recipe(models.Model):
 
 
     def __unicode__(self):
-        """
-        Cette méthode que nous définirons dans tous les modèles
-        nous permettra de reconnaître facilement les différents objets que nous
-        traiterons plus tard et dans l'administration
-        """
         return self.title
+
 
     def save(self, *args, **kwargs):
         if not self.id:
             self.slug = slugify(self.title)
 
         super(Recipe, self).save(*args, **kwargs)
-
