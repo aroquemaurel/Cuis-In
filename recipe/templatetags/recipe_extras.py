@@ -13,12 +13,16 @@ def addcss(field, css):
 @register.filter(is_safe=True)
 def star(nb_star):
     ret = ""
+
     for i in range(0, nb_star):
         ret += '<i class="glyphicon glyphicon-star"></i>&nbsp;'
 
     for i in range(nb_star, 5):
         ret += '<i class="glyphicon glyphicon-star-empty"></i>'
 
+    if nb_star == -1:
+        ret = '<i class="glyphicon glyphicon-question-sign"></i>'
+        
     return mark_safe(ret)
 
 @register.filter(is_safe=True)
