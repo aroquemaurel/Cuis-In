@@ -8,17 +8,16 @@
             <th class="col-md-1"><i class="glyphicon glyphicon-calendar"></i>Date</th>
             <th class="col-md-5">Titre</th>
             <th class="col-md-2">Note</th>
-            <th class="col-md-2">&nbsp;Difficulté</th>
-            <th class="col-md-3"><i class="glyphicon glyphicon-time"></i>&nbsp;Préparation</th>
-            <th style="min-width: 90px" class="col-md-3"><i class="glyphicon glyphicon-time"></i>&nbsp;Cuisson</th>
+            <th class="col-md-2">Réservation</th>
         </tr>
     </thead>
     <tbody>
         {% for restaurant in restaurants %}
-            <tr class="clickable-row" data-href="{% url "restaurant.views.show" id=restaurant.id %}">
+               <tr class="clickable-row" data-href="{% url "restaurant.views.show" restaurant.id restaurant.slug %}">
                 <td>{{ restaurant.date|date:"d/m/Y" }}</td>
                 <td>{{ restaurant.title }}</td>
                 <td>{{ restaurant.note|star }}</td>
+                <td>{{ restaurant.reservation }}</td>
             </tr>
         {% empty %}
             <tr>
