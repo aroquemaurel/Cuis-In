@@ -17,7 +17,7 @@
                 <td>{{ restaurant.date|date:"d/m/Y" }}</td>
                 <td>{{ restaurant.title }}</td>
                 <td>{{ restaurant.note|star }}</td>
-                <td>{{ restaurant.reservation }}</td>
+                <td>{{ restaurant.reservation|bool }}</td>
             </tr>
         {% empty %}
             <tr>

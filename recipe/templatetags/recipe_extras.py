@@ -21,6 +21,15 @@ def star(nb_star):
 
     return mark_safe(ret)
 
+@register.filter(is_safe=True)
+def bool(check):
+    if check:
+        ret = '<i class="glyphicon glyphicon-ok"></i>'
+    else:
+        ret = '<i class="glyphicon glyphicon-remove"></i>'
+
+    return mark_safe(ret)
+
 @register.filter(name="duration")
 def duration(nb_minutes):
     hours = int(nb_minutes/60)
