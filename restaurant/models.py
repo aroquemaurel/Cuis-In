@@ -9,6 +9,14 @@ class Restaurant(models.Model):
     reservation = models.BooleanField(default=False)
     description = models.TextField()
 
+    # Contacts informations
+    phone = models.CharField(max_length=16, default="")
+    website = models.CharField(max_length=128, default="")
+    address = models.CharField(max_length=128, default="")
+    postalcode = models.CharField(max_length=16, default="")
+    city = models.CharField(max_length=128, default="")
+
+
     def __unicode__(self):
         return u"%s" % self.title
 
