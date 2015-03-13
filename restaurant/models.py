@@ -1,4 +1,6 @@
 from django.db import models
+from tags.models import Tag
+
 
 class Restaurant(models.Model):
     title = models.CharField(max_length=128)
@@ -15,7 +17,7 @@ class Restaurant(models.Model):
     postalcode = models.CharField(max_length=16, default="")
     city = models.CharField(max_length=128, default="")
 
-#    tags = models.ManyToManyField
+    tags = models.ManyToManyField(Tag)
 
     def __unicode__(self):
         return u"%s" % self.title

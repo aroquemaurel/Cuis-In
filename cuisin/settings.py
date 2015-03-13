@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'recipe',
     'restaurant',
+    'tags',
     'floppyforms',
     'members'
 )
