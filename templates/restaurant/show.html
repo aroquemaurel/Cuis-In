@@ -3,7 +3,7 @@
 
 {% block content %}
     <div class="row">
-            <div class="col-md-5 panel panel-default">
+            <div class="col-md-4 panel panel-default">
             <div class="panel-body">
             <ul style="list-style-type: none">
                 <li><i class="glyphicon glyphicon-globe"></i>&nbsp;&nbsp;Site Web: <a href="{{ restaurant.website }}">{{ restaurant.website }}</a></li>
@@ -16,11 +16,16 @@
             </div>
         </div>
 
-        <div class="col-md-offset-3 col-md-3 panel panel-default">
+        <div class="col-md-offset-4 col-md-4 panel panel-default">
             <div class="panel-body">
                 <ul style="list-style-type: none">
                     <li>Note <span style="float: right">{{ restaurant.note|star }}</span></li>
                     <li>Réservation <span style="float: right">{{ restaurant.reservation|bool }}</span></li>
+                    <li><i class="glyphicon glyphicon-tags"></i>&nbsp;&nbsp;Tags
+                    {% for tag in restaurant.tags.all %}
+                        <span class="label label-info">{{ tag.tag }}</span>
+                    {% endfor %}
+                </li>
                 </ul>
             </div>
         </div>

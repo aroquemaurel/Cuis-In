@@ -9,6 +9,11 @@
                 <li><i class="glyphicon glyphicon-cutlery"></i>&nbsp;&nbsp;Couvert: {{ recipe.serves }}</li>
                 <li><i class="glyphicon glyphicon-time"></i>&nbsp;&nbsp;Préparation: {{ recipe.preparationTime|duration }}</li>
                 <li><i class="glyphicon glyphicon-time"></i>&nbsp;&nbsp;Cuisson: {{ recipe.cuissonTime|duration }}</li>
+                <li><i class="glyphicon glyphicon-tags"></i>&nbsp;&nbsp;Tags:
+                    {% for tag in recipe.tags.all %}
+                        <span class="label label-info">{{ tag.tag }}</span>
+                    {% endfor %}
+                </li>
             </ul>
             </div>
         </div>
