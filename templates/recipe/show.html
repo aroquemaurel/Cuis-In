@@ -1,5 +1,6 @@
 {% extends "skeleton.html" %}
 {% load recipe_extras %}
+{% load tags_extras %}
 
 {% block content %}
     <div class="row">
@@ -11,7 +12,7 @@
                 <li><i class="glyphicon glyphicon-time"></i>&nbsp;&nbsp;Cuisson: {{ recipe.cuissonTime|duration }}</li>
                 <li><i class="glyphicon glyphicon-tags"></i>&nbsp;&nbsp;Tags:
                     {% for tag in recipe.tags.all %}
-                        <span class="label label-info">{{ tag.tag }}</span>
+                        {{ tag.tag|tag }}
                     {% endfor %}
                 </li>
             </ul>

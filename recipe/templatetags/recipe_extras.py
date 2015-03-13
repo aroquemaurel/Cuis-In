@@ -47,6 +47,7 @@ def duration(nb_minutes):
 
     return ret
 
+
 @register.filter(name="hash")
 def hash(h, key):
     if key in h:

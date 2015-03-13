@@ -1,5 +1,6 @@
 {% extends "skeleton.html" %}
 {% load recipe_extras %}
+{% load tags_extras %}
 
 {% block content %}
     <div class="row">
@@ -23,7 +24,7 @@
                     <li>Réservation <span style="float: right">{{ restaurant.reservation|bool }}</span></li>
                     <li><i class="glyphicon glyphicon-tags"></i>&nbsp;&nbsp;Tags
                     {% for tag in restaurant.tags.all %}
-                        <span class="label label-info">{{ tag.tag }}</span>
+                        {{ tag.tag|tag }}
                     {% endfor %}
                 </li>
                 </ul>
