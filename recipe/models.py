@@ -1,7 +1,7 @@
 #-*- coding: utf-8 -*-
 from django.db import models
 from django.template.defaultfilters import slugify
-
+from tags.models import Tag
 
 class Category(models.Model):
     title = models.CharField(max_length=128)
@@ -31,7 +31,7 @@ class Recipe(models.Model):
     ingredients = models.TextField()
 
     category = models.ForeignKey('Category')
-
+    tags = models.ManyToManyField(Tag)
 
     def __unicode__(self):
         return self.title
