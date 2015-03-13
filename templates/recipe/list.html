@@ -9,6 +9,7 @@
     <thead>
         <tr>
             <th class="col-md-1"><i class="glyphicon glyphicon-calendar"></i>Date</th>
+            <th class="col-md-3"><i class="glyphicon glyphicon-tags"></i>Tags</th>
             <th class="col-md-5">Titre</th>
             <th class="col-md-2">Note</th>
             <th class="col-md-2">&nbsp;Difficulté</th>
@@ -20,6 +21,12 @@
         {% for recipe in recipes %}
             <tr class="clickable-row" data-href="{% url "recipe.views.show" id=recipe.id slug=recipe.slug %}">
                 <td>{{ recipe.date|date:"d/m/Y" }}</td>
+               <td>
+                   {% for tag in recipe.tags.all %}
+                       <span class="label label-info">{{ tag.tag }}</span>
+                   {% endfor %}
+               </td>
+
                 <td>{{ recipe.title }}</td>
                 <td>{{ recipe.note|star }}</td>
                 <td>{{ recipe.hard|star}}</td>
