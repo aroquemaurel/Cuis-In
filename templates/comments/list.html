@@ -18,12 +18,16 @@
             {% endfor %}
         </ul>
 
-        <form class="form-horizontal" action="{% url "recipe.views.show" id=recipe.id slug=recipe.slug %}" method="post">{% csrf_token %}
-            <div class="form-group">
+        {% if user.is_authenticated %}
+        <form action="{% url "recipe.views.show" id=recipe.id slug=recipe.slug %}" method="post">{% csrf_token %}
+            <div class="form-group" style="width: 100%">
                 {{ form.text}}
             </div>
-            <div class="form-group">
-                <button class="btn btn-default">Add</button>
-            </div>
+                <button type="submit"
+                        style="margin: auto; width: 250px; "
+                        class="btn btn-primary btn-block btn-lg">
+                <i class="glyphicon glyphicon-plus"></i>&nbsp;Ajouter le commentaire
+                </button>
         </form>
+    {% endif %}
     </div>
