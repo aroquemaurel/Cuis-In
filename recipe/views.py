@@ -39,7 +39,7 @@ def show(request, id, slug='a'):
     recipe = get_object_or_404(Recipe, id=id)
     categories = Category.objects.all()
     ingredients = recipe.ingredients.splitlines()
-    comments = Comment.objects.filter(recipe=recipe)
+    comments = Comment.objects.filter(recipe=recipe).order_by('-date')
 
     if request.method == 'POST':
         form = AddCommentForm(request.POST)
