@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -20,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '(0(^^$iir=8pk-8_*l0qv(5q!yefsfo2-ll87xpd4(ny3a*be('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True 
+DEBUG = True
 
 TEMPLATE_DEBUG = True
 
@@ -40,7 +41,8 @@ INSTALLED_APPS = (
     'restaurant',
     'tags',
     'floppyforms',
-    'members'
+    'members',
+    'comments'
 )
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
@@ -65,20 +67,20 @@ WSGI_APPLICATION = 'cuisin.wsgi.application'
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 DATABASES = {
-#""""
-#	'default': {
-#		'ENGINE': 'django.db.backends.sqlite3',
-#		'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#	}
-#"""
-	'default': {
-		'ENGINE': 'django.db.backends.mysql',
-		'NAME': 'cuisin_django',
-		'USER': 'cuisin_django', 
-		'PASSWORD': 'cuisin_django',
-		'HOST': 'localhost',
-		'PORT' : '3306',
-	}
+    # """"
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+    #"""
+    #    'default': {
+    #   'ENGINE': 'django.db.backends.mysql',
+    #  'NAME': 'cuisin_django',
+    # 'USER': 'cuisin_django',
+    # 'PASSWORD': 'cuisin_django',
+    # 'HOST': 'localhost',
+    # 'PORT' : '3306',
+    # }
 }
 
 # Internationalization
@@ -99,10 +101,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/assets/'
-STATIC_ROOT = '/data/dev/www/assets'
+STATIC_ROOT = '/home/aroquemaurel/projets/python/Cuis-In'
 STATICFILES_DIRS = (
-    "/data/dev/www/Cuis-In/assets/",
+    "/home/aroquemaurel/projets/python/Cuis-In/assets/",
 )
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR,  'templates'),
+    os.path.join(BASE_DIR, 'templates'),
 )
