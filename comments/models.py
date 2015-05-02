@@ -4,8 +4,8 @@ from django.db import models
 from recipe.models import Recipe
 
 
-class Comments:
+class Comment(models.Model):
     author = models.ForeignKey(User)
     recipe = models.ForeignKey(Recipe)
     date = models.DateTimeField()
-    comment = models.TextField()
+    text = models.TextField()
