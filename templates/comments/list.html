@@ -7,7 +7,7 @@
             {%  for comment in comments %}
                 <li>
                 <div class="commenterImage">
-                 {# <img src="http://lorempixel.com/50/50/people/6" />#}
+                 <img src="{{ comment.author.avatar }}" />
                 </div>
                     <div class="commentText">
                     <p class="">

@@ -1,12 +1,12 @@
 #-*- coding: utf-8 -*-
 import datetime
-from django.contrib.auth.models import User
 from django.db import models
+from members.models import UserInfo
 from recipe.models import Recipe
 
 
 class Comment(models.Model):
-    author = models.ForeignKey(User)
+    author = models.ForeignKey(UserInfo)
     recipe = models.ForeignKey(Recipe)
     date = models.DateTimeField()
     text = models.TextField()
