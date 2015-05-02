@@ -17,9 +17,10 @@
                 </li>
             {% endfor %}
         </ul>
-        <form class="form-inline" role="form">
+
+        <form class="form-horizontal" action="{% url "recipe.views.show" id=recipe.id slug=recipe.slug %}" method="post">{% csrf_token %}
             <div class="form-group">
-                <input class="form-control" type="text" placeholder="Your comments" />
+                {{ form.text}}
             </div>
             <div class="form-group">
                 <button class="btn btn-default">Add</button>

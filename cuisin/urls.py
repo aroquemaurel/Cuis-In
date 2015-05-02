@@ -16,6 +16,8 @@ urlpatterns = patterns('',
     url(r'^recettes/(?P<id>\d+)-(?P<slug>.+)$', 'recipe.views.show'),
     url(r'^recettes/(?P<category>.+)$', 'recipe.views.home'),
 
+    url(r'^commentaires/ajouter$', 'comments.views.add'),
+
     url(r'^deconnexion$', 'members.views.deconnection'),
     url(r'^connexion$', 'members.views.connection'),
 )

@@ -1,5 +1,7 @@
 #-*- coding: utf-8 -*-
+from datetime import datetime
 from django.shortcuts import render, get_object_or_404
+from comments.forms import AddCommentForm
 from recipe.forms import AddRecipeForm
 from recipe.models import Recipe, Category
 from comments.models import Comment
@@ -38,7 +40,22 @@ def show(request, id, slug='a'):
     categories = Category.objects.all()
     ingredients = recipe.ingredients.splitlines()
     comments = Comment.objects.filter(recipe=recipe)
-    return render(request, 'recipe/show.html', {'recipe': recipe,
+
+    if request.method == 'POST':
+        form = AddCommentForm(request.POST)
+
+        if form.is_valid():
+            comment = Comment()
+            comment.text = form.cleaned_data['text']
+            comment.author = request.user
+            comment.recipe = recipe
+            comment.date = datetime.now()
+            comment.save()
+    else:
+        form = AddCommentForm()
+
+    return render(request, 'recipe/show.html', {'form': form,
+                                                'recipe': recipe,
                                                 'categories': categories,
                                                 'currentCat': recipe.category,
                                                 'ingredients': ingredients,
