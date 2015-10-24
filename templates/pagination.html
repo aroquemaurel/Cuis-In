@@ -1,0 +1,32 @@
+{% load recipe_extras %}
+
+{% if models.paginator.num_pages > 1 %}
+<nav>
+  <ul class="pagination">
+        {% if models.has_previous %}
+            <li>
+                <a href="?s={{ search }}&page={{ models.previous_page_number }}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        {% endif %}
+
+        {% num_range models.paginator.num_pages as some_range %}
+        {% for p in some_range %}
+            {% if forloop.counter != models.number %}
+                <li><a href="?s={{ search }}&page={{forloop.counter}}">{{ forloop.counter }}</a></li>
+            {% else %}
+                <li class="active"><a href="?s={{ search }}&page={{forloop.counter}}">{{ forloop.counter }}</a></li>
+            {% endif %}
+        {% endfor %}
+
+        {% if recipes.has_next %}
+            <li>
+                <a href="?s={{ search }}&page={{ models.next_page_number }}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        {% endif %}
+  </ul>
+</nav>
+{% endif %}
