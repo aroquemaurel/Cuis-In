@@ -66,22 +66,18 @@ WSGI_APPLICATION = 'cuisin.wsgi.application'
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 DATABASES = {
-
 #	'default': {
 #		'ENGINE': 'django.db.backends.sqlite3',
 #		'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #	}
-
-
-	 'default': {
+    'default': {
 	 	'ENGINE': 'django.db.backends.mysql',
 	 	'NAME': 'cuisin_test',
 	 	'USER': 'cuisin_test',
 	 	'PASSWORD': 'cuisin_test',
 	 	'HOST': '192.168.1.1',
-	 	'PORT' : '3306',
+	 	'PORT': '3306',
 	 }
-
 }
 
 # Internationalization
