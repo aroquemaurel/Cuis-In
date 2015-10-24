@@ -1,15 +1,30 @@
-<div class="pagination">
-    <span class="step-links">
+{% load recipe_extras %}
+
+<nav>
+  <ul class="pagination">
         {% if models.has_previous %}
-            <a href="?s={{ search }}&page={{ models.previous_page_number }}">previous</a>
+            <li>
+                <a href="?s={{ search }}&page={{ models.previous_page_number }}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
         {% endif %}
 
-        <span class="current">
-            Page {{ models.number }} of {{ models.paginator.num_pages }}.
-        </span>
+        {% num_range models.paginator.num_pages as some_range %}
+        {% for p in some_range %}
+            {% if forloop.counter != models.number %}
+                <li><a href="?s={{ search }}&page={{forloop.counter}}">{{ forloop.counter }}</a></li>
+            {% else %}
+                <li class="active"><a href="?s={{ search }}&page={{forloop.counter}}">{{ forloop.counter }}</a></li>
+            {% endif %}
+        {% endfor %}
 
         {% if recipes.has_next %}
-            <a href="?s={{ search }}&page={{ models.next_page_number }}">next</a>
+            <li>
+                <a href="?s={{ search }}&page={{ models.next_page_number }}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
         {% endif %}
-    </span>
-</div>
+  </ul>
+</nav>
