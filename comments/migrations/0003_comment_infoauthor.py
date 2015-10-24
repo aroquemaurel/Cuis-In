@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='comment',
             name='infoAuthor',
-            field=models.ForeignKey(default=0, to='members.UserInfo'),
+            field=models.ForeignKey(to='members.UserInfo'),
             preserve_default=True,
         ),
     ]

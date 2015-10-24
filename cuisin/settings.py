@@ -40,7 +40,8 @@ INSTALLED_APPS = (
     'restaurant',
     'tags',
     'floppyforms',
-    'members'
+    'members',
+	'comments'
 )
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
