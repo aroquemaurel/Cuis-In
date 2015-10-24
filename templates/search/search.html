@@ -1,0 +1,60 @@
+{% extends "skeleton.html" %}
+{% load recipe_extras %}
+{% load tags_extras %}
+
+{% block leftbar %}
+    {% include "recipe/categories.html" %}
+{% endblock %}
+{% block content %}
+    {% include "recipe/display-recipes.html" %}
+{% endblock %}
+
+{% block title %}
+    Recherche
+{% endblock %}
+
+{% block titlePage %}
+    Cuis-In
+    {{ username }}
+{% endblock %}
+{% block subtitle %}
+    Recherche
+{% endblock %}
+
+{% block javascript %}
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+{% endblock %}
+
+{% block alert %}
+    {% if errors|hash:'connection' == 1 %}
+        <div class="bs-component">
+            <div class="alert alert-dismissible alert-danger">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>Oups!</strong> Mot de passe où Login incorrect
+            </div>
+        </div>
+    {% elif errors|hash:'connection' == 0 %}
+        <div class="bs-component">
+        <div class="alert alert-dismissible alert-success">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>Succès!</strong> Vous êtes bien connectés
+        </div>
+        </div>
+    {% elif errors|hash:'deconnection' == 0 %}
+        <div class="bs-component">
+            <div class="alert alert-dismissible alert-success">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>Succès!</strong> Vous êtes bien déconnectés
+            </div>
+        </div>
+    {% elif errors|hash:'deconnection' == 1 %}
+        <div class="bs-component">
+            <div class="alert alert-dismissible alert-danger">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>Oups!</strong> Une erreur dans la déconnexion s'est produite
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

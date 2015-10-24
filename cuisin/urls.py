@@ -18,4 +18,5 @@ urlpatterns = patterns('',
 
     url(r'^deconnexion$', 'members.views.deconnection'),
     url(r'^connexion$', 'members.views.connection'),
+    url(r'^recherche/(?P<searchtext>.+)$', 'search.views.search'),
 )
