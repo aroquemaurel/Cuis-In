@@ -1,6 +1,10 @@
 {% load recipe_extras %}
 {% load tags_extras %}
-{% include "pagination.html" with models=recipes %}
+{% if s %}
+    {% include "pagination.html" with models=recipes search=s %}
+{% else %}
+    {% include "pagination.html" with models=recipes %}
+{% endif %}
 <table class="table table-striped table-hover">
     <thead>
         <tr>

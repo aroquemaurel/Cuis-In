@@ -1,7 +1,7 @@
 <div class="pagination">
     <span class="step-links">
         {% if models.has_previous %}
-            <a href="?page={{ models.previous_page_number }}">previous</a>
+            <a href="?s={{ search }}&page={{ models.previous_page_number }}">previous</a>
         {% endif %}
 
         <span class="current">
@@ -9,7 +9,7 @@
         </span>
 
         {% if recipes.has_next %}
-            <a href="?page={{ models.next_page_number }}">next</a>
+            <a href="?s={{ search }}&page={{ models.next_page_number }}">next</a>
         {% endif %}
     </span>
 </div>

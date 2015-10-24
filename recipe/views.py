@@ -14,7 +14,7 @@ def home(request, errors=[], category='entree'):
     current_cat = Category.objects.get(slug=category)
     categories = Category.objects.all()
     recipes_list = Recipe.objects.all().filter(category=current_cat).order_by('title')
-    paginator = Paginator(recipes_list, 5)
+    paginator = Paginator(recipes_list, 15)
     page = request.GET.get('page')
     try:
         recipes = paginator.page(page)
