@@ -1,5 +1,6 @@
 #-*- coding: utf-8 -*-
 from datetime import datetime
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404
 from comments.forms import AddCommentForm
 from members.models import UserInfo
@@ -12,7 +13,15 @@ from django.contrib.auth.decorators import permission_required
 def home(request, errors=[], category='entree'):
     current_cat = Category.objects.get(slug=category)
     categories = Category.objects.all()
-    recipes = Recipe.objects.all().filter(category=current_cat).order_by('title')
+    recipes_list = Recipe.objects.all().filter(category=current_cat).order_by('title')
+    paginator = Paginator(recipes_list, 5)
+    page = request.GET.get('page')
+    try:
+        recipes = paginator.page(page)
+    except PageNotAnInteger:
+        recipes = paginator.page(1)
+    except EmptyPage:
+        recipes = paginator.page(paginator.num_pages)
 
     return render(request, 'recipe/list.html', {'categories': categories,
                                                 'currentCat': current_cat,
