@@ -1,13 +1,4 @@
-{% load recipe_extras %}
-
-{% if currentCat.slug == 'whiskies' %}
-    {% include "tasting/display/whiskies.html" %}
-{% elif currentCat.slug == 'cafes' %}
-    {% include "tasting/display/coffee.html" %}
-{% elif currentCat.slug == 'vins' %}
-    {% include "tasting/display/wines.html" %}
-{% else %}
-    <table class="table table-striped table-hover">
+<table class="table table-striped table-hover">
     <thead>
         <tr>
             <th class="col-md-1"><i class="glyphicon glyphicon-calendar"></i>Date</th>
@@ -29,4 +20,3 @@
         {% endfor %}
     </tbody>
     </table>
-{% endif %}
