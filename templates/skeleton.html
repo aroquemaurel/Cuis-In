@@ -29,6 +29,9 @@
                 <li>
                     <a href="{% url "restaurant.views.list" %}">Liste des restaurants</a>
                 </li>
+                <li>
+                    <a href="{% url "tasting.views.list" %}">Dégustation</a>
+                </li>
 
                 {% if user.is_authenticated %}
                     <li>
