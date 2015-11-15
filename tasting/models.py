@@ -11,6 +11,7 @@ class TastingCategory(models.Model):
 
 class Tasting(models.Model):
     category = models.ForeignKey('TastingCategory')
+    slug = models.SlugField(max_length=128)
     name = models.CharField(max_length=128)
     flair = models.TextField()
     mouth = models.TextField()
