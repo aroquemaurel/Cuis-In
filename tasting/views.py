@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.shortcuts import render_to_response
 from tasting.models import Tasting, Coffee, Whisky, Wine
 from tasting.models import TastingCategory
@@ -43,4 +43,21 @@ def list(request, category='whiskies'):
 
 
 def show(request, id, slug='a'):
-    return render_to_response('tasting/show.html')
+    buff = get_object_or_404(Tasting, id=id)
+
+    if buff.category.slug == 'cafes':
+        tasting = get_object_or_404(Coffee, tasting_ptr=buff)
+    elif buff.category.slug == 'whiskies':
+        tasting = get_object_or_404(Whisky, tasting_ptr=buff)
+    elif buff.category.slug == 'vins':
+        tasting = get_object_or_404(Wine, tasting_ptr=buff)
+    else:
+        tasting = buff
+
+    categories = TastingCategory.objects.all().order_by('title')
+
+
+    return render(request, 'tasting/show.html', {'tasting': tasting,
+                                                'categories': categories,
+                                                'currentCat': tasting.category,
+                                                })

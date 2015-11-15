@@ -3,6 +3,7 @@ from django.db import models
 
 class TastingCategory(models.Model):
     title = models.CharField(max_length=128)
+    singularTitle = models.CharField(max_length=128)
     slug = models.SlugField(max_length=128)
 
     def __unicode__(self):
@@ -42,7 +43,7 @@ class Whisky(Tasting):
     type = models.ForeignKey('WhiskyType')
 
     def __unicode__(self):
-        return self.category.title + " " + self.type.type + self.name
+        return self.type.type + " " + self.name + " " + str(self.old) + " ans"
 
 
 class Coffee(Tasting):
