@@ -1,0 +1,76 @@
+{% extends "skeleton.html" %}
+{% load recipe_extras %}
+{% load tags_extras %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-4 panel panel-default">
+            <div class="panel-body">
+            <ul style="list-style-type: none">
+                {% if currentCat.slug == 'cafes' %}
+                    <li>Altitude: {{ tasting.altitude }}m</li>
+                    <li>Pays: {{ tasting.country}}m</li>
+                {% elif currentCat.slug == 'whiskies' or currentCat.slug == 'vins'%}
+                    <li>Degré d'alcool : {{ tasting.degAlcool }}°</li>
+                {% endif %}
+            </ul>
+            </div>
+        </div>
+        <div class="col-md-offset-4 col-md-4 panel panel-default">
+            <div class="panel-body">
+                <ul style="list-style-type: none">
+                    <li>Note <span style="float: right">{{ tasting.note|star }}</span></li>
+                    {% if currentCat.slug == 'cafes' %}
+                        <li>Force <span style="float: right">{{ tasting.strength|star }}</span></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;<b>Nez</b></div>
+            <div class="panel-body">
+                {{ tasting.flair|linebreaks }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="glyphicon glyphicon-pushpin"></i>&nbsp;&nbsp;<b>Couleur</b></div>
+            <div class="panel-body">
+                {{ tasting.color|linebreaks }}
+            </div>
+        </div>
+    </div>
+        <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="glyphicon glyphicon-pushpin"></i>&nbsp;&nbsp;<b>Bouche</b></div>
+            <div class="panel-body">
+                {{ tasting.mouth|linebreaks }}
+            </div>
+        </div>
+    </div>
+
+    <hr/>
+    <div class="row">
+    </div>
+</div>
+
+{% endblock %}
+
+{% block title %}
+    Dégustation
+{% endblock %}
+
+{% block titlePage %}
+    Afficher un {{ tasting.category.singularTitle }}
+{% endblock %}
+
+{% block subtitle %}
+    {{ tasting }}
+{% endblock %}
+
+{% block leftbar %}
+    {% include "tasting/categories.html" %}
+{% endblock %}

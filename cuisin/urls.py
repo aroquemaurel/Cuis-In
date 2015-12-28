@@ -11,6 +11,10 @@ urlpatterns = patterns('',
     url(r'^restaurants$', 'restaurant.views.list'),
     url(r'^restaurants/(?P<id>\d+)-(?P<slug>.+)$', 'restaurant.views.show'),
 
+    url(r'^degustations/(?P<id>\d+)-(?P<slug>.+)$', 'tasting.views.show'),
+    url(r'^degustations/(?P<category>.+)$', 'tasting.views.list'),
+    url(r'^degustations$', 'tasting.views.list'),
+
     url(r'^recettes/ajouter', 'recipe.views.add'),
     url(r'^$', 'recipe.views.home'),
     url(r'^recettes/(?P<id>\d+)-(?P<slug>.+)$', 'recipe.views.show'),
