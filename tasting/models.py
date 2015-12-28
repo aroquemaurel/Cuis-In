@@ -41,6 +41,7 @@ class CoffeeCountry(models.Model):
 class Whisky(Tasting):
     old = models.IntegerField()
     type = models.ForeignKey('WhiskyType')
+    degAlcool = models.IntegerField()
 
     def __unicode__(self):
         return self.type.type + " " + self.name + " " + str(self.old) + " ans"
@@ -57,6 +58,7 @@ class Coffee(Tasting):
 
 class Wine(Tasting):
     year = models.IntegerField()
+    degAlcool = models.IntegerField()
 
     def __unicode__(self):
         return self.category.title + " " + self.name

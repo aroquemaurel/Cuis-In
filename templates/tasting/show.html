@@ -10,6 +10,8 @@
                 {% if currentCat.slug == 'cafes' %}
                     <li>Altitude: {{ tasting.altitude }}m</li>
                     <li>Pays: {{ tasting.country}}m</li>
+                {% elif currentCat.slug == 'whiskies' or currentCat.slug == 'vins'%}
+                    <li>Degré d'alcool : {{ tasting.degAlcool }}°</li>
                 {% endif %}
             </ul>
             </div>
@@ -29,7 +31,7 @@
         <div class="panel panel-default">
             <div class="panel-heading"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;<b>Nez</b></div>
             <div class="panel-body">
-                {{ tasting.nose|linebreaks }}
+                {{ tasting.flair|linebreaks }}
             </div>
         </div>
     </div>
@@ -62,9 +64,7 @@
 {% endblock %}
 
 {% block titlePage %}
-    {% if tasting.category.slug == 'whiskies' %}
-        Afficher un {{ tasting.category.singularTitle }}
-    {% endif %}
+    Afficher un {{ tasting.category.singularTitle }}
 {% endblock %}
 
 {% block subtitle %}
