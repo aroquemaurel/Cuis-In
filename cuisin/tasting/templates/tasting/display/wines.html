@@ -7,22 +7,18 @@
             <th class="col-md-1"><i class="glyphicon glyphicon-calendar"></i>Date</th>
             <th class="col-md-5">Nom</th>
             <th class="col-md-2">Note</th>
-            <th class="col-md-2">Age</th>
-            <th class="col-md-2">Type</th>
         </tr>
     </thead>
     <tbody>
         {% for tasting in tastings %}
-            <tr class="clickable-row" data-href="{% url "tasting.views.show" id=tasting.id slug=tasting.slug %}">
+            <tr class="clickable-row" data-href="{% url "tasting.show" id=tasting.id slug=tasting.slug %}">
                 <td>{{ tasting.date|date:"d/m/Y" }}</td>
                 <td>{{ tasting.name }}</td>
                 <td>{{ tasting.note|star }}</td>
-                <td>{{ tasting.old }} ans</td>
-                <td>{{ tasting.type.type|tag }}</td>
             </tr>
         {% empty %}
             <tr>
-                <td colspan="6">Aucun whisky</td>
+                <td colspan="6">Aucune dégustation</td>
             </tr>
         {% endfor %}
     </tbody>

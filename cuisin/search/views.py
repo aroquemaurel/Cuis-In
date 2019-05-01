@@ -3,8 +3,8 @@ from django.db.models import Q
 from django.http import HttpResponseNotFound
 from django.shortcuts import render
 
-from recipe.models import Recipe
-from tags.models import Tag
+from cuisin.recipe.models import Recipe
+from cuisin.tags.models import Tag
 
 
 def search(request):

@@ -1,13 +1,13 @@
 #-*- coding: utf-8 -*-
 from datetime import datetime
+
+from django.contrib.auth.decorators import permission_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404
-from comments.forms import AddCommentForm
-from members.models import UserInfo
-from recipe.forms import AddRecipeForm
-from recipe.models import Recipe, Category
-from comments.models import Comment
-from django.contrib.auth.decorators import permission_required
+from cuisin.comments.forms import AddCommentForm
+from cuisin.members.models import UserInfo
+from cuisin.recipe.models import Recipe, Category
+from cuisin.comments.models import Comment
 
 
 def home(request, errors=[], category='entree'):

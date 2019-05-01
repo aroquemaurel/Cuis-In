@@ -6,7 +6,7 @@
                     class="active"
                 {% endif %}
                     >
-                <a href="{% url "tasting.views.list" category.slug %}">{{ category.title }}</a></li>
+                <a href="{% url "tasting.list" category.slug %}">{{ category.title }}</a></li>
         {% endfor %}
     </ul>
 </div>

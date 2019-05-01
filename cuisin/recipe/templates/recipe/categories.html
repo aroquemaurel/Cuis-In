@@ -6,7 +6,7 @@
                     class="active"
                 {% endif %}
                     >
-                <a href="{% url "recipe.views.home" category.slug %}">{{ category.title }}</a></li>
+                <a href="{% url "home" category.slug %}">{{ category.title }}</a></li>
         {% endfor %}
     </ul>
 </div>

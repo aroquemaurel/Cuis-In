@@ -1,6 +1,6 @@
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404
-from restaurant.models import Restaurant
+from cuisin.restaurant.models import Restaurant
 
 
 def list(request):

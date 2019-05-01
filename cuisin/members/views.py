@@ -1,8 +1,8 @@
 #-*- coding: utf-8 -*-
 
-from members.forms import LoginForm
+from cuisin.members.forms import LoginForm
 from django.contrib.auth import authenticate, login, logout
-from recipe.views import home
+from cuisin.recipe.views import home
 def connection(request):
     errors = {'connection': False}
 

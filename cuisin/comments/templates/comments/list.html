@@ -19,7 +19,7 @@
         </ul>
 
         {% if user.is_authenticated %}
-        <form action="{% url "recipe.views.show" id=recipe.id slug=recipe.slug %}" method="post">{% csrf_token %}
+        <form action="{% url "recipe.show" id=recipe.id slug=recipe.slug %}" method="post">{% csrf_token %}
             <div class="form-group" style="width: 100%">
                 {{ form.text}}
             </div>

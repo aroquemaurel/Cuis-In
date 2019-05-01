@@ -1,5 +1,5 @@
 from django import forms
-from comments.models import Comment
+from cuisin.comments.models import Comment
 
 
 class AddCommentForm(forms.ModelForm):

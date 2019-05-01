@@ -5,7 +5,7 @@ from cuisin.tags.models import Tag
 class Restaurant(models.Model):
     title = models.CharField(max_length=128)
     slug = models.SlugField(max_length=128, default="")
-    note = models.IntegerField(max_length=2)
+    note = models.IntegerField()
     date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date d'ajout")
     reservation = models.BooleanField(default=False)
     description = models.TextField()

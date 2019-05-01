@@ -18,7 +18,7 @@
     {% endif %}
 {% endblock %}
 {% block content %}
-        <form class="form-horizontal" action="{% url "recipe.views.add" %}" method="post">{% csrf_token %}
+        <form class="form-horizontal" action="{% url "recipe.add" %}" method="post">{% csrf_token %}
         <fieldset>
           <legend>Nouvelle recette</legend>
             <div class="form-group">

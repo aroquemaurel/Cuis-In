@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
-from django.shortcuts import render_to_response
-from tasting.models import Tasting, Coffee, Whisky, Wine
-from tasting.models import TastingCategory
+#from django.shortcuts import render_to_response
+from cuisin.tasting.models import Tasting, Coffee, Whisky, Wine
+from cuisin.tasting.models import TastingCategory
 
 def list(request, category='whiskies'):
     current_cat = TastingCategory.objects.get(slug=category)

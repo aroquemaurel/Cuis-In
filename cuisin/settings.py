@@ -20,11 +20,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '(0(^^$iir=8pk-8_*l0qv(5q!yefsfo2-ll87xpd4(ny3a*be('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True 
+DEBUG = True
 
-TEMPLATE_DEBUG = True
-
-ALLOWED_HOSTS = ['dev.joohoo.fr', 'garp']
+ALLOWED_HOSTS = ['cuis-in.roquemaurel.pro', 'garp', '127.0.0.1']
 
 
 # Application definition
@@ -36,6 +34,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cuisin',
     'cuisin.recipe',
     'cuisin.restaurant',
     'cuisin.tags',
@@ -43,10 +42,7 @@ INSTALLED_APPS = (
     'cuisin.comments',
     'cuisin.tasting'
 )
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.contrib.auth.context_processors.auth',
-    'members.context_processors.include_login_form'
-)
+
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -58,6 +54,22 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'cuisin.urls'
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 
 WSGI_APPLICATION = 'cuisin.wsgi.application'
 
@@ -101,7 +113,4 @@ STATIC_URL = '/assets/'
 STATIC_ROOT = '/data/dev/www/assets'
 STATICFILES_DIRS = (
     "/data/dev/www/Cuis-In/assets/",
-)
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR,  'templates'),
 )
