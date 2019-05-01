@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import permission_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404
 from cuisin.comments.forms import AddCommentForm
+from cuisin.members.forms import LoginForm
 from cuisin.members.models import UserInfo
 from cuisin.recipe.models import Recipe, Category
 from cuisin.comments.models import Comment
@@ -16,6 +17,8 @@ def home(request, errors=[], category='entree'):
     recipes_list = Recipe.objects.all().filter(category=current_cat).order_by('title')
     paginator = Paginator(recipes_list, 15)
     page = request.GET.get('page')
+    form = LoginForm()
+
     try:
         recipes = paginator.page(page)
     except PageNotAnInteger:
@@ -26,7 +29,9 @@ def home(request, errors=[], category='entree'):
     return render(request, 'recipe/list.html', {'categories': categories,
                                                 'currentCat': current_cat,
                                                 'recipes': recipes,
-                                                'errors': errors})
+                                                'errors': errors,
+                                                'login_form': form})
+
 
 @permission_required('recipe.add_recipe')
 def add(request):

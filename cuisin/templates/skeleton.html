@@ -58,7 +58,7 @@
                     </li>
                 {% else %}
 
-                    <form method="post" class="navbar-form navbar-right " action="{% url "members.connection" %}"> {% csrf_token %}
+                    <form method="post" class="navbar-form navbar-right " action="{% url 'members.connection' %}"> {% csrf_token %}
                         <div class="form-group ">
                             {{ login_form.username|addcss:'form-control ' }}
                             {{ login_form.password|addcss:'form-control' }}

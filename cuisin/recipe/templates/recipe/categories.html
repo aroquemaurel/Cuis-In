@@ -2,7 +2,7 @@
     <ul class="nav nav-pills nav-stacked">
         {% for category in categories %}
             <li
-                {% if category.slug = currentCat.slug %}
+                {% if category.slug == currentCat.slug %}
                     class="active"
                 {% endif %}
                     >

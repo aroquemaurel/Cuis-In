@@ -27,6 +27,7 @@ def star(nb_star):
 
     return mark_safe(ret)
 
+
 @register.filter(is_safe=True)
 def bool(check):
     if check:
@@ -35,6 +36,7 @@ def bool(check):
         ret = '<i class="glyphicon glyphicon-remove"></i>'
 
     return mark_safe(ret)
+
 
 @register.filter(name="duration")
 def duration(nb_minutes):
@@ -67,6 +69,7 @@ class RangeNode(Node):
         context[self.context_name] = range(int(self.num.resolve(context)))
         return ""
 
+
 @register.tag
 def num_range(parser, token):
     """
@@ -95,4 +98,5 @@ def num_range(parser, token):
     if not trash == 'as':
         raise TemplateSyntaxError("%s takes the syntax %s number_to_iterate\
             as context_variable" % (fnctn, fnctn))
+
     return RangeNode(num, context_name)
