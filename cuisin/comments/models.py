@@ -1,8 +1,8 @@
 #-*- coding: utf-8 -*-
 import datetime
 from django.db import models
-from members.models import UserInfo
-from recipe.models import Recipe
+from cuisin.members.models import UserInfo
+from cuisin.recipe.models import Recipe
 
 
 class Comment(models.Model):

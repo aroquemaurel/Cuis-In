@@ -1,5 +1,5 @@
 from django.contrib import admin
-from tasting.models import Whisky, WhiskyType, Coffee, CoffeeCountry, Wine, TastingCategory
+from cuisin.tasting.models import Whisky, WhiskyType, Coffee, CoffeeCountry, Wine, TastingCategory
 
 admin.site.register(Whisky)
 admin.site.register(WhiskyType)

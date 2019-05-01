@@ -1,5 +1,5 @@
 from django.db import models
-from tags.models import Tag
+from cuisin.tags.models import Tag
 
 
 class Restaurant(models.Model):

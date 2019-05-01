@@ -36,13 +36,12 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'recipe',
-    'restaurant',
-    'tags',
-    'floppyforms',
-    'members',
-	'comments',
-    'tasting'
+    'cuisin.recipe',
+    'cuisin.restaurant',
+    'cuisin.tags',
+    'cuisin.members',
+    'cuisin.comments',
+    'cuisin.tasting'
 )
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',

@@ -1,7 +1,7 @@
 #-*- coding: utf-8 -*-
 from django.db import models
 from django.template.defaultfilters import slugify
-from tags.models import Tag
+from cuisin.tags.models import Tag
 
 class Category(models.Model):
     title = models.CharField(max_length=128)
