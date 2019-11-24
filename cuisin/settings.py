@@ -84,10 +84,10 @@ DATABASES = {
 #	}
     'default': {
 	 	'ENGINE': 'django.db.backends.mysql',
-	 	'NAME': 'cuisin_test',
-	 	'USER': 'cuisin_test',
-	 	'PASSWORD': 'cuisin_test',
-	 	'HOST': '192.168.1.1',
+	 	'NAME': 'cuis-in',
+	 	'USER': 'cuis-in',
+	 	'PASSWORD': 'Test',
+	 	'HOST': 'localhost',
 	 	'PORT': '3306',
 	 }
 }
@@ -109,8 +109,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-STATIC_URL = '/assets/'
-STATIC_ROOT = '/data/dev/www/assets'
-STATICFILES_DIRS = (
-    "/data/dev/www/Cuis-In/assets/",
-)
+STATIC_URL = '/static/'
+STATIC_ROOT = '/data/www/prod/cuis-in/static/'
+STATICFILES_DIRS = [ ]
