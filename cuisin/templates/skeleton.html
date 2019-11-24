@@ -60,8 +60,10 @@
 
                     <form method="post" class="navbar-form navbar-right " action="{% url 'members.connection' %}"> {% csrf_token %}
                         <div class="form-group ">
-                            {{ login_form.username|addcss:'form-control ' }}
-                            {{ login_form.password|addcss:'form-control' }}
+							{# login_form.username|addcss:'form-control ' #}
+							{# login_form.password|addcss:'form-control' #}
+							{{ login_form.username }}
+                            {{ login_form.password }}
                         </div>
                         <button type="submit" class="btn btn-info"><i span class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;Se
                             connecter
