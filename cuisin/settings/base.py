@@ -19,8 +19,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '(0(^^$iir=8pk-8_*l0qv(5q!yefsfo2-ll87xpd4(ny3a*be('
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = ['cuis-in.roquemaurel.pro', 'garp', '127.0.0.1']
 
@@ -77,20 +75,6 @@ WSGI_APPLICATION = 'cuisin.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
-DATABASES = {
-#	'default': {
-#		'ENGINE': 'django.db.backends.sqlite3',
-#		'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#	}
-    'default': {
-	 	'ENGINE': 'django.db.backends.mysql',
-	 	'NAME': 'cuis-in',
-	 	'USER': 'cuis-in',
-	 	'PASSWORD': 'Test',
-	 	'HOST': 'localhost',
-	 	'PORT': '3306',
-	 }
-}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
