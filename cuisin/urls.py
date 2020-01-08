@@ -7,6 +7,4 @@ urlpatterns = [
     url(r'^', include('cuisin.tasting.urls')),
     url(r'^', include('cuisin.members.urls')),
     url(r'^', include('cuisin.search.urls')),
-
-    url(r'^admin/', include(admin.site.urls)),
 ]

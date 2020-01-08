@@ -46,7 +46,7 @@ class Migration(migrations.Migration):
                 ('preparation', models.TextField()),
                 ('date', models.DateTimeField(auto_now_add=True, verbose_name=b"Date d'ajout")),
                 ('ingredients', models.TextField()),
-                ('category', models.ForeignKey(to='recipe.Category')),
+                ('category', models.ForeignKey(to='recipe.Category', on_delete=models.CASCADE)),
                 ('tags', models.ManyToManyField(to='tags.Tag')),
             ],
             options={
