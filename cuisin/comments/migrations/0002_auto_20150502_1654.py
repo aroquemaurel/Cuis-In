@@ -20,8 +20,8 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('date', models.DateTimeField()),
                 ('text', models.TextField()),
-                ('author', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
-                ('recipe', models.ForeignKey(to='recipe.Recipe')),
+                ('author', models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)),
+                ('recipe', models.ForeignKey(to='recipe.Recipe', on_delete=models.CASCADE)),
             ],
             options={
             },

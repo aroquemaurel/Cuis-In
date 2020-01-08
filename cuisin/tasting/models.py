@@ -11,7 +11,7 @@ class TastingCategory(models.Model):
 
 
 class Tasting(models.Model):
-    category = models.ForeignKey('TastingCategory')
+    category = models.ForeignKey('TastingCategory', on_delete=models.CASCADE)
     slug = models.SlugField(max_length=128)
     name = models.CharField(max_length=128)
     flair = models.TextField()
@@ -40,7 +40,7 @@ class CoffeeCountry(models.Model):
 
 class Whisky(Tasting):
     old = models.IntegerField()
-    type = models.ForeignKey('WhiskyType')
+    type = models.ForeignKey('WhiskyType', on_delete=models.CASCADE)
     degAlcool = models.IntegerField()
 
     def __unicode__(self):
@@ -48,7 +48,7 @@ class Whisky(Tasting):
 
 
 class Coffee(Tasting):
-    country = models.ForeignKey('CoffeeCountry')
+    country = models.ForeignKey('CoffeeCountry', on_delete=models.CASCADE)
     altitude = models.IntegerField()
     strength = models.IntegerField()
 

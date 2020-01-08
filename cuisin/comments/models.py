@@ -6,8 +6,8 @@ from cuisin.recipe.models import Recipe
 
 
 class Comment(models.Model):
-    author = models.ForeignKey(UserInfo)
-    recipe = models.ForeignKey(Recipe)
+    author = models.ForeignKey(UserInfo, on_delete=models.CASCADE)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     date = models.DateTimeField()
     text = models.TextField()
 
