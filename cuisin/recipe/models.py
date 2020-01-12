@@ -8,14 +8,14 @@ class Category(models.Model):
     title = models.CharField(max_length=128)
     slug = models.SlugField(max_length=128)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
 
 class Ingredient(models.Model):
     title = models.CharField(max_length=128)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
 
@@ -33,7 +33,7 @@ class Recipe(models.Model):
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
     def save(self, *args, **kwargs):
