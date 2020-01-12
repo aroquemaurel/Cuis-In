@@ -11,8 +11,8 @@ DATABASES = {
          'ENGINE': 'django.db.backends.mysql',
          # Backends disponibles : 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
          'NAME': 'cuis-in',
-         'USER': 'cuis-in', # TODO 
-         'PASSWORD': 'OUFf7yKZ8AKSuuTq',
+         'USER': 'cuis-in',
+         'PASSWORD': 'HoliestMcNaughton',
          'HOST': '127.0.0.1',
          'PORT': '',
          'OPTIONS': {
