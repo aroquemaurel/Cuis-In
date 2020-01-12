@@ -48,10 +48,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Coffee',
             fields=[
-                ('tasting_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='tasting.Tasting')),
+                ('tasting_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='tasting.Tasting', on_delete=models.CASCADE)),
                 ('altitude', models.IntegerField()),
                 ('strength', models.IntegerField(max_length=2)),
-                ('country', models.ForeignKey(to='tasting.CoffeeCountry')),
+                ('country', models.ForeignKey(to='tasting.CoffeeCountry', on_delete=models.CASCADE)),
             ],
             options={
             },
@@ -60,7 +60,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Whiskies',
             fields=[
-                ('tasting_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='tasting.Tasting')),
+                ('tasting_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='tasting.Tasting', on_delete=models.CASCADE)),
                 ('old', models.IntegerField()),
             ],
             options={
@@ -80,7 +80,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Wine',
             fields=[
-                ('tasting_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='tasting.Tasting')),
+                ('tasting_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='tasting.Tasting', on_delete=models.CASCADE)),
                 ('year', models.IntegerField()),
             ],
             options={
@@ -90,13 +90,13 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='whiskies',
             name='type',
-            field=models.ForeignKey(to='tasting.WhiskyType'),
+            field=models.ForeignKey(to='tasting.WhiskyType', on_delete=models.CASCADE),
             preserve_default=True,
         ),
         migrations.AddField(
             model_name='tasting',
             name='category',
-            field=models.ForeignKey(to='tasting.Category'),
+            field=models.ForeignKey(to='tasting.Category', on_delete=models.CASCADE),
             preserve_default=True,
         ),
     ]

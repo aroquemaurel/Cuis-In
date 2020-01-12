@@ -26,4 +26,4 @@ def search(request):
     else:
         return HttpResponseNotFound('<h1>Page not found</h1>')
     
-    return render(request, 'search/search.html', {'recipes': recipes, 's':search_text})
+    return render(request, 'search/search.html', {'recipes': recipes, 's': search_text})

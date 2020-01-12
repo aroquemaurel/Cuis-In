@@ -19,6 +19,6 @@ class Restaurant(models.Model):
 
     tags = models.ManyToManyField(Tag)
 
-    def __unicode__(self):
+    def __str__(self):
         return u"%s" % self.title
 
