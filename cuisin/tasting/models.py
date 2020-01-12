@@ -43,7 +43,7 @@ class Whisky(Tasting):
     type = models.ForeignKey('WhiskyType', on_delete=models.CASCADE)
     degAlcool = models.IntegerField()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.type.type + " " + self.name + " " + str(self.old) + " ans"
 
 
@@ -52,7 +52,7 @@ class Coffee(Tasting):
     altitude = models.IntegerField()
     strength = models.IntegerField()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.category.title + " " + self.country.country + " " + self.name
 
 
@@ -60,5 +60,5 @@ class Wine(Tasting):
     year = models.IntegerField()
     degAlcool = models.IntegerField()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.category.title + " " + self.name
