@@ -1,5 +1,5 @@
 from django.contrib import admin
-from cuisin.recipe.models import Category, Recipe, Ingredient
+from cuisin.recipe.models import Category, Recipe
 
 
 class RecipeAdmin(admin.ModelAdmin):
@@ -22,6 +22,10 @@ class RecipeAdmin(admin.ModelAdmin):
     )
 
 
-admin.site.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    fields = 'title',
+
+
+admin.site.register(Category, CategoryAdmin)
 admin.site.register(Recipe, RecipeAdmin)
-admin.site.register(Ingredient)
+
