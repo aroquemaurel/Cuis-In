@@ -39,7 +39,8 @@ INSTALLED_APPS = (
     'cuisin.tags',
     'cuisin.members',
     'cuisin.comments',
-    'cuisin.tasting'
+    'cuisin.tasting',
+    'cuisin.search'
 )
 
 MIDDLEWARE = [
