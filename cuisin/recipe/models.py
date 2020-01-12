@@ -1,12 +1,19 @@
 #-*- coding: utf-8 -*-
 from django.db import models
 from django.template.defaultfilters import slugify
+from django_unique_slugify import unique_slugify
 from cuisin.tags.models import Tag
 
 
 class Category(models.Model):
     title = models.CharField(max_length=128)
-    slug = models.SlugField(max_length=128)
+    slug = models.SlugField(max_length=128, blank=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            unique_slugify(self, self.title)
+
+        super(Category, self).save(**kwargs)
 
     def __str__(self):
         return self.title
