@@ -26,53 +26,12 @@
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
             <ul class="nav navbar-nav">
-                <li>
-                    <a href="{% url "restaurant.list" %}">Liste des restaurants</a>
-                </li>
-                <li>
-                    <a href="{% url "tasting.list" %}">Dégustation</a>
-                </li>
-
-                {% if user.is_authenticated %}
-                    <li>
-                        <a href="{% url "recipe.add" %}">Ajouter une recette</a>
-                    </li>
-                {% endif %}
-                    <form method="get" class="navbar-form navbar-right " action="{% url "search.search" %}">
-                        <div class="form-group ">
-                          <input type="text" name="s" class="form-control" placeholder="Recherche" aria-describedby="basic-addon2"/>
-                        </div>
-                    </form>
+                <form method="get" class="navbar-form navbar-right " action="{% url "search.search" %}">
+                    <div class="form-group ">
+                      <input type="text" name="s" class="form-control" placeholder="Recherche" aria-describedby="basic-addon2"/>
+                    </div>
+                </form>
             </ul>
-
-            <ul class="nav navbar-nav navbar-right">
-
-                {% if perms.recipe.add_recipe %}
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="menu" aria-expanded="false">
-                            <i span class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;{{ user.username }} <span
-                                class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="{% url "members.deconnection" %}">Déconnexion</a></li>
-                        </ul>
-                    </li>
-                {% else %}
-
-                    <form method="post" class="navbar-form navbar-right " action="{% url 'members.connection' %}"> {% csrf_token %}
-                        <div class="form-group ">
-							{# login_form.username|addcss:'form-control ' #}
-							{# login_form.password|addcss:'form-control' #}
-							{{ login_form.username }}
-                            {{ login_form.password }}
-                        </div>
-                        <button type="submit" class="btn btn-info"><i span class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;Se
-                            connecter
-                        </button>
-                    </form>
-                {% endif %}
-
-            </ul>
-
         </div>
     </div>
 </div>
